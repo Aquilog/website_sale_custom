@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<data>
+
+
+<template id="variants" inherit_id="website_sale.variants">
+  <xpath expr="//ul" position="replace">
+    <ul t-attf-class="list-unstyled js_add_cart_variants #{ul_class}" t-att-data-attribute_value_ids="attribute_value_ids">
+      <t t-foreach="product.attribute_line_ids.sorted(key=lambda x: x.attribute_id.sequence)" t-as="variant_id">
+        <li t-if="len(variant_id.value_ids) > 1">
+          <strong t-field="variant_id.attribute_id.name"/>
+
+          <div class="container">
+            <div class="texture-render">
+              <div id="texture-preview" class="texture-a"></div>
+            </div>
+            <div id="texture-picker">
+              <ul class="texture-container">
+                <li class="">
+                  <a href="#" class="texture-dropdown">
+                    <span class="texture-cube texture-a"></span>
+                    <span class="texture-label">texture a</span>
+                    <span class="fa fa-chevron-down spin-caret pull-right"></span>
+                  </a>
+                  <ul class="texture-wrapper">
+                    <li class="">
+                     <a href="#" class="texture-row is-selected" data-value="texture-a" data-class="texture-a">
+                       <span class="texture-cube texture-a"></span>
+                       <span class="texture-label">Texture a</span>
+                       <span class="status fa fa-check pull-right text-success"></span>
+                     </a>
+                    </li>
+                    <li class="">
+                     <a href="#" class="texture-row" data-value="texture-b" data-class="texture-b">
+                       <span class="texture-cube texture-b"></span>
+                       <span class="texture-label">Texture b</span>
+                       <span class="status fa fa-check pull-right text-success hide"></span>
+                     </a>
+                    </li>
+                    <li class="">
+                     <a href="#" class="texture-row" data-value="texture-c" data-class="texture-c">
+                       <span class="texture-cube texture-c"></span>
+                       <span class="texture-label">Texture c</span>
+                       <span class="status fa fa-check pull-right text-success hide"></span>
+                     </a>
+                    </li>
+                    <li class="">
+                     <a href="#" class="texture-row last-row" data-value="texture-d" data-class="texture-d">
+                       <span class="texture-cube texture-d"></span>
+                       <span class="texture-label">Texture d</span>
+                       <span class="status fa fa-check pull-right text-success hide"></span>
+                     </a>
+                    </li>
+                  </ul>
+               </li>
+              </ul>
+            </div>
+          </div>
+
+        </li>
+      </t>
+    </ul>
+  </xpath>
+
+</template>
+
+</data>
+</odoo>

@@ -13,6 +13,7 @@ odoo.define('website_sale_custom', function (require) {
     },
     start: function () {
       // this.menu_dropdown();
+      this.action_hover();
       this.action_select();
     },
     // menu_dropdown: function () {
@@ -27,7 +28,7 @@ odoo.define('website_sale_custom', function (require) {
     //     }
     //   });
     // },
-    action_select: function () {
+    action_hover: function () {
       console.log($);
       console.log(this);
       $('.variant-value').on('mouseover', function (e) {
@@ -35,34 +36,20 @@ odoo.define('website_sale_custom', function (require) {
         var valueId = parentDiv.attr('id').split('-')[1];
         var valueImg = $(this).find('img:first').attr('src');
         var preview = $('#preview-' + valueId);
-        console.log(parentDiv);
-        console.log(valueId);
-        console.log(valueImg);
-        console.log(preview);
-
         preview.css('visibility', 'visible');
         preview.find('img:first').attr('src', valueImg);
-        // e.stopImmediatePropagation();
-        // var self = $(this);
-        // var Value = new instance.web.Model('product.attribute.value')
-        // var image_name = Value.read('name').filter([('id', '=', $('#value-img').attr('id'))])
-        // console.log()
-        // var icon = link.find('.status:first');
-        // var value = link.attr('data-value')
-        // var css = link.attr('data-class')
-        // $('#texture-text').html(value)
-        
-        // $('#value-preview').css("visibility", "visible");
-        // $('#value-img').attr("src", "/website_sale_custom/static/src/img/seat_colors/cerise.png");
-        // $('.texture-row').removeClass('is-selected');
-        // $('.status').addClass('hide');
-        // var span = link.parent().parent().prev();
-        // span.find('span.texture-cube').removeAttr('class').addClass('texture-cube ' + css);
-        // span.find('span.texture-label').html(value);
-        // link.addClass('is-selected');
-        // icon.removeClass('hide')
       });
-    }
+    },
+    action_select: function () {
+      $('.variant-value').on('click', function (e) {
+        var parentDiv  = $(this).parent().parent();
+        var valueId = parentDiv.attr('id').split('-')[1];
+        var valueImg = $(this).find('img:first').attr('src');
+        var preview = $('#preview-' + valueId);
+        preview.css('visibility', 'visible');
+        preview.find('img:first').attr('src', valueImg);
+      });
+    },
   });
 
   var t = new ValuePicker();

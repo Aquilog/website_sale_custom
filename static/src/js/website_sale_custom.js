@@ -9,7 +9,7 @@ odoo.define('website_sale_custom', function (require) {
   var ValuePicker = Widget.extend({
     // template: 'website_sale_custom.index',
     init: function () {
-      this.eventType = 'click touchstart';
+      // this.eventType = 'click touchstart';
     },
     start: function () {
       // this.menu_dropdown();
@@ -28,9 +28,22 @@ odoo.define('website_sale_custom', function (require) {
     //   });
     // },
     action_select: function () {
-      $('.variant-value').on(this.eventType, function (e) {
+      console.log($);
+      console.log(this);
+      $('.variant-value').on('mouseover', function (e) {
+        var parentDiv  = $(this).parent().parent();
+        var valueId = parentDiv.attr('id').split('-')[1];
+        var valueImg = $(this).find('img:first').attr('src');
+        var preview = $('#preview-' + valueId);
+        console.log(parentDiv);
+        console.log(valueId);
+        console.log(valueImg);
+        console.log(preview);
+
+        preview.css('visibility', 'visible');
+        preview.find('img:first').attr('src', valueImg);
         // e.stopImmediatePropagation();
-        var self = $(this);
+        // var self = $(this);
         // var Value = new instance.web.Model('product.attribute.value')
         // var image_name = Value.read('name').filter([('id', '=', $('#value-img').attr('id'))])
         // console.log()
@@ -40,7 +53,7 @@ odoo.define('website_sale_custom', function (require) {
         // $('#texture-text').html(value)
         
         // $('#value-preview').css("visibility", "visible");
-        $('#value-img').attr("src", "/website_sale_custom/static/src/img/seat_colors/cerise.png");
+        // $('#value-img').attr("src", "/website_sale_custom/static/src/img/seat_colors/cerise.png");
         // $('.texture-row').removeClass('is-selected');
         // $('.status').addClass('hide');
         // var span = link.parent().parent().prev();

@@ -142,7 +142,7 @@ border-color: rgb(53, 126, 189);
   margin: 0;
 }
 .value-img {
-  margin: 0;
+  margin: 4px;
   padding: 0;
   height: 20px;
   width: auto;
@@ -153,12 +153,13 @@ border-color: rgb(53, 126, 189);
 .variant-value:hover {
   background: #eee;
 }
-#value-preview {
-  width: 200px;
-  height: 125px;
-  border: 1px solid #eee;
+.variant-preview {
+  width: 100%;
+  min-height: 20px;
+  // border: 1px solid #eee;
   // background-repeat: no-repeat;
   // background-attachment: scroll;
-  margin: 0 auto;
+  margin: 5px auto;
+  background-color: red;
   visibility: hidden;
 }
